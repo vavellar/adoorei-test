@@ -17,8 +17,22 @@ const router = createRouter({
     {
       path: '/register',
       name: 'Register',
-      component: () => import('../views/SignUp.vue')
-    }
+      component: () => import('../views/Register/Register.vue'),
+      children: [
+        {
+          path: '/register/step1',
+          name: 'Step1',
+          component: () => import('../views/Register/Step1.vue')
+        },
+        {
+          path: '/register/step2/:selectedPlan',
+          name: 'Step2',
+          props: true,
+          component: () => import('../views/Register/Step2.vue'),
+        },
+      ]
+    },
+
   ]
 })
 
