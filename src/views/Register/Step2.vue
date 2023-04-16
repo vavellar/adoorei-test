@@ -29,7 +29,7 @@
                   <input type="checkbox" v-model="state.form.acceptUseTerms">
                   <span>Ao concluir com seu cadastro você concorda com nossos temos de uso e políticas de privacidade</span>
               </div>
-              <Button text="CRIAR CONTA" type="submit" :is-disabled="buttonIsDisabled"/>
+              <Button text="CRIAR CONTA" type="submit" :is-disabled="buttonIsDisabled" :is-loading="state.isLoading"/>
           </div>
       </form>
       <div>
@@ -42,7 +42,11 @@
               :show-button="false"
               is-selected
           />
-          <Button text="Trocar plano" variant="outlined" @click="router.back()"/>
+          <Button
+              text="Trocar plano"
+              variant="outlined"
+              @click="router.back()"
+          />
       </div>
   </div>
 </template>
@@ -67,6 +71,7 @@ const state = reactive({
         confirmPassword: '',
         acceptUseTerms: false,
     },
+    isLoading: false,
 })
 
 const plan = computed(() => plans.find((plan) => plan.title === route.params.selectedPlan))
@@ -80,19 +85,25 @@ const buttonIsDisabled = computed(() =>
     areDifferent.value ||
     state.form.password.length < 8
 )
-function handleRegister() {
+async function handleRegister() {
     const [ firstname, lastname ] = state.form.name.split(' ')
-    register({
-        email: state.form.email,
-        phone: state.form.phone,
-        password: state.form.password,
-        name: {
-            firstname,
-            lastname
-        }
-    }).then((response) => {
-        console.log(response)
-    }).catch((e) => console.log(e))
+    state.isLoading = true
+    try {
+        await register({
+            email: state.form.email,
+            phone: state.form.phone,
+            password: state.form.password,
+            name: {
+                firstname,
+                lastname
+            }
+        })
+        await router.push('/')
+    } catch(e) {
+        console.log(e)
+    } finally {
+        console.log('teste')
+    }
 
 }
 </script>
@@ -133,8 +144,7 @@ function handleRegister() {
   }
 
     &__submit {
-
-     div:first-of-type {
+     div {
         margin: 10px 0;
 
          span {

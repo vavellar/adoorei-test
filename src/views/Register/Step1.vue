@@ -38,10 +38,6 @@ import {plans} from "@/utils/plans";
         @media only screen and (max-width: 992px) {
           flex-direction: column;
         }
-
-          div:nth-child(2) {
-            margin: 0 40px;
-          }
       }
   }
 }
