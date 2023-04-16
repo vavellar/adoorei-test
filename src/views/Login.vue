@@ -20,7 +20,7 @@
           placeholder="Sua senha"
           v-model="password"
         />
-        <button type="submit">Fazer login</button>
+        <Button type="submit" text="FAZER LOGIN" class="login__button"/>
     </form>
     <h3>Ainda não tem uma conta? <a href="/register">Cadastre-se</a></h3>
   </div>
@@ -29,9 +29,10 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import Input from "@/components/Input.vue";
-
+import Button from "@/components/Button.vue";
 const email = ref(null)
 const password = ref(null)
+
 function login() {
     console.log(email.value)
     console.log(password.value)
@@ -47,8 +48,13 @@ function login() {
     border: 1px solid #E6EAF2;
     border-radius: 5px;
   }
+
   &__input {
     margin-top: 1rem;
+  }
+
+  &__button {
+    margin-top: 2rem;
   }
 }
 @media (min-width: 1024px) {
