@@ -9,17 +9,18 @@
 
 <style lang="scss">
 .loading {
-  display: inline-block;
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  display: flex;
 
   div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     margin: 8px;
     border: 8px solid #fff;
     border-radius: 50%;

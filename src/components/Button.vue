@@ -49,6 +49,7 @@ function handleClick() {
   display: flex;
   justify-content: center;
   width: 100%;
+  height: 60px;
   border-radius: 5px;
   cursor: pointer;
   border: none;
