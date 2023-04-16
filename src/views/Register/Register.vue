@@ -14,10 +14,6 @@
 
 </template>
 
-<script setup lang="ts">
-
-</script>
-
 <style lang="scss">
 .register {
   margin: 40px 0;
