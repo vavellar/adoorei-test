@@ -35,6 +35,10 @@ import {plans} from "@/utils/plans";
           display: flex;
           margin: 40px 0;
 
+        @media only screen and (max-width: 992px) {
+          flex-direction: column;
+        }
+
           div:nth-child(2) {
             margin: 0 40px;
           }

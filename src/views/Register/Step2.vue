@@ -100,15 +100,23 @@ function handleRegister() {
 <style lang="scss">
 .register__step2 {
   display: flex;
+
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+  }
+
   &__form {
     max-width: 617px;
     background-color: #FFFFFF;
     padding: 24px;
+    height: fit-content;
     border: 1px solid #E6EAF2;
     border-radius: 5px;
     margin-right: 40px;
 
-
+    @media only screen and (max-width: 992px) {
+      margin-right: 0;
+    }
   }
 
   &__inputs {

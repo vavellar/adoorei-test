@@ -110,6 +110,10 @@ function goToSecondStep() {
   flex-direction: column;
   align-items: center;
 
+  @media only screen and (max-width: 992px) {
+    max-width: unset;
+  }
+
  &__badge {
      position: absolute;
      top: -10px;

@@ -22,6 +22,11 @@
 .register {
   margin: 40px 0;
 
+  @media only screen and (max-width: 992px) {
+    margin: 0;
+      padding: 20px;
+  }
+
   &__header {
     display: flex;
     align-items: center;
