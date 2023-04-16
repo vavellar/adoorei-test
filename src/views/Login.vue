@@ -4,11 +4,10 @@
           src="../assets/images/locaweb.svg"
           alt="logo"
       >
-      <form class="login__form" @submit.prevent="login">
+      <form class="login__form" @submit.prevent="handleLogin">
         <h2>Entre na sua conta</h2>
         <h3>Para acessar sua conta informe seu e-mail e senha</h3>
         <Input
-          type="email"
           class="login__input"
           label="E-mail"
           placeholder="Seu e-mail"
@@ -20,22 +19,31 @@
           placeholder="Sua senha"
           v-model="password"
         />
-        <Button type="submit" text="FAZER LOGIN" class="login__button"/>
+        <Button
+          type="submit"
+          text="FAZER LOGIN"
+          class="login__button"
+          :is-disabled="buttonIsDisabled"
+        />
     </form>
-    <h3>Ainda não tem uma conta? <a href="/register">Cadastre-se</a></h3>
+    <h3>Ainda não tem uma conta? <a href="/register/step1">Cadastre-se</a></h3>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import Input from "@/components/Input.vue";
 import Button from "@/components/Button.vue";
-const email = ref(null)
-const password = ref(null)
+import { login } from "@/usecases/login";
 
-function login() {
-    console.log(email.value)
-    console.log(password.value)
+const email = ref('')
+const password = ref('')
+
+const buttonIsDisabled = computed(() => email.value.length === 0 || password.value.length === 0)
+
+function handleLogin() {
+    const token = login(email.value, password.value)
+    console.log(token)
 }
 </script>
 
