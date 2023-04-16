@@ -4,7 +4,7 @@
             <img src="../assets/images/locaweb.svg" alt="">
             <div class="home__user" @click="showDropDown = !showDropDown">
                 <span>J</span>
-                <div class="home__dropdown" v-if="showDropDown" @click="router.back()">Sair</div>
+                <div class="home__dropdown" v-if="showDropDown" @click="logout">Sair</div>
             </div>
         </header>
         <main class="home__content">
@@ -21,8 +21,12 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import router from "@/router";
-
 const showDropDown = ref(false)
+
+function logout() {
+    localStorage.removeItem('access_token')
+    router.back()
+}
 </script>
 
 <style lang="scss">

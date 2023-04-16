@@ -24,6 +24,7 @@
           text="FAZER LOGIN"
           class="login__button"
           :is-disabled="buttonIsDisabled"
+          :is-loading="loading"
         />
     </form>
     <h3>Ainda não tem uma conta? <a href="/register/step1">Cadastre-se</a></h3>
@@ -35,15 +36,24 @@ import {computed, ref} from "vue";
 import Input from "@/components/Input.vue";
 import Button from "@/components/Button.vue";
 import { login } from "@/usecases/login";
+import router from "@/router";
 
 const email = ref('')
 const password = ref('')
-
+const loading = ref(false)
 const buttonIsDisabled = computed(() => email.value.length === 0 || password.value.length === 0)
 
-function handleLogin() {
-    const token = login(email.value, password.value)
-    console.log(token)
+async function handleLogin() {
+    loading.value = true
+    try {
+        const token = await login()
+        localStorage.setItem('access_token', token)
+        await router.push('/')
+    } catch(e) {
+        console.log(e)
+    } finally {
+        loading.value = false
+    }
 }
 </script>
 
