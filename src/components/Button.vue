@@ -4,12 +4,18 @@
         :class="['button', { 'button-disabled': isDisabled }, `button-${variant}`]"
         @click="handleClick"
         :disabled="isDisabled"
-        text="">
-        {{ text }}
+        text=""
+    >
+        <Loading v-if="isLoading"/>
+        <span v-else>
+            {{ text }}
+        </span>
     </button>
 </template>
 
 <script setup>
+import Loading from "@/components/Loading.vue";
+
 const emit = defineEmits(['click'])
 defineProps({
     text: {
@@ -24,6 +30,10 @@ defineProps({
         default: 'contained'
     },
     isDisabled: {
+        type: Boolean,
+        default: false
+    },
+    isLoading: {
         type: Boolean,
         default: false
     }
