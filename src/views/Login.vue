@@ -49,6 +49,15 @@ function handleLogin() {
 
 <style lang="scss">
 .login {
+  @media only screen and (max-width: 992px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    justify-content: center;
+  }
+
   &__form {
     background-color: #FFFFFF;
     padding: 2.4rem;
