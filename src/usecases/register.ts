@@ -22,5 +22,5 @@ export const register = (user: User) => {
                 phone: user.phone
             }
         )
-    })
+    }).then((response) => response.json())
 }

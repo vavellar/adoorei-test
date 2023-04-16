@@ -59,6 +59,7 @@ import {computed, reactive} from "vue";
 import { useRoute } from 'vue-router'
 import {plans} from "@/utils/plans";
 import {register} from "@/usecases/register";
+import {login} from "@/usecases/login";
 import router from "@/router";
 
 const route = useRoute()
@@ -89,7 +90,7 @@ async function handleRegister() {
     const [ firstname, lastname ] = state.form.name.split(' ')
     state.isLoading = true
     try {
-        await register({
+        const response = await register({
             email: state.form.email,
             phone: state.form.phone,
             password: state.form.password,
@@ -98,11 +99,14 @@ async function handleRegister() {
                 lastname
             }
         })
+        alert(`Usuário criado, ID: ${response.id}`)
+        const token = await login()
+        localStorage.setItem('access_token', token)
         await router.push('/')
     } catch(e) {
         console.log(e)
     } finally {
-        console.log('teste')
+        state.isLoading = false
     }
 
 }

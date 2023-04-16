@@ -3,13 +3,13 @@
         <header class="home__header">
             <img src="../assets/images/locaweb.svg" alt="">
             <div class="home__user" @click="showDropDown = !showDropDown">
-                <span>J</span>
+                <span>U</span>
                 <div class="home__dropdown" v-if="showDropDown" @click="logout">Sair</div>
             </div>
         </header>
         <main class="home__content">
            <div>
-               <h2>Olá João</h2>
+               <h2>Olá Usuário,</h2>
                <h3>Seja bem vindo à sua conta de hospedagem</h3>
            </div>
             <img src="../assets/images/background.svg" alt="" height="654">
@@ -25,7 +25,7 @@ const showDropDown = ref(false)
 
 function logout() {
     localStorage.removeItem('access_token')
-    router.back()
+    router.push({ name: 'Login'})
 }
 </script>
 
