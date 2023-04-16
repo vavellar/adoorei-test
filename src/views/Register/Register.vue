@@ -2,6 +2,7 @@
     <div class="register">
         <div class="register__header">
             <img
+                    @click="router.back()"
                     src="../../assets/images/locaweb.svg"
                     alt="logo"
             >
@@ -13,7 +14,9 @@
     </div>
 
 </template>
-
+<script setup lang="ts">
+import router from "@/router";
+</script>
 <style lang="scss">
 .register {
   margin: 40px 0;
@@ -27,6 +30,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
+      img {
+        cursor: pointer;
+      }
   }
 
   &__view {
