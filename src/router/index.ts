@@ -1,5 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+function checkIfUserIsLogged() {
+  if (!localStorage.getItem('access_token')) {
+    return '/login'
+  }
+}
+function checkIfUserIsNotLoggedIn() {
+  if (localStorage.getItem('access_token')) {
+    return '/'
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,16 +17,19 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      beforeEnter: checkIfUserIsLogged,
       component: HomeView
     },
     {
       path: '/login',
       name: 'Login',
+      beforeEnter: checkIfUserIsNotLoggedIn,
       component: () => import('../views/Login.vue')
     },
     {
       path: '/register',
       name: 'Register',
+      beforeEnter: checkIfUserIsNotLoggedIn,
       component: () => import('../views/Register/Register.vue'),
       children: [
         {
@@ -32,7 +45,12 @@ const router = createRouter({
         },
       ]
     },
-
+    {
+      path: "/:notFound",
+      name: 'NotFound',
+      beforeEnter: checkIfUserIsLogged,
+      component: HomeView
+    }
   ]
 })
 
