@@ -8,12 +8,14 @@
             :placeholder="placeholder"
             @input="$emit('update:modelValue', $event.target.value)"
         />
+        <span>{{ helperText }}</span>
+        <span class="input__error">{{ errorText }}</span>
     </div>
 </template>
 
 <script setup>
 defineEmits(['update:modelValue'])
-defineProps(['modelValue', 'label', 'placeholder', 'type'])
+defineProps(['modelValue', 'label', 'placeholder', 'type', 'helperText', 'errorText'])
 
 </script>
 
@@ -26,6 +28,10 @@ defineProps(['modelValue', 'label', 'placeholder', 'type'])
 
   &__label {
     margin-bottom: 2px;
+  }
+
+  &__error {
+   color: red;
   }
 
   &__element {
