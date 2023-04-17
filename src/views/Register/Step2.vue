@@ -32,16 +32,18 @@
               <Button text="CRIAR CONTA" type="submit" :is-disabled="buttonIsDisabled" :is-loading="state.isLoading"/>
           </div>
       </form>
-      <div>
-          <Card
-              :title="plan.title"
-              :options="plan.options"
-              :text="plan.text"
-              :info="plan.info"
-              :subtitle="plan.value"
-              :show-button="false"
-              is-selected
-          />
+      <div class="register__step2__plan">
+          <div>
+              <Card
+                  :title="plan.title"
+                  :options="plan.options"
+                  :text="plan.text"
+                  :info="plan.info"
+                  :subtitle="plan.value"
+                  :show-button="false"
+                  is-selected
+              />
+          </div>
           <Button
               text="Trocar plano"
               variant="outlined"
@@ -131,6 +133,7 @@ async function handleRegister() {
 
     @media only screen and (max-width: 992px) {
       margin-right: 0;
+      margin-bottom: 20px;
     }
   }
 
@@ -156,5 +159,11 @@ async function handleRegister() {
          }
      }
   }
+
+    &__plan {
+        div {
+            margin-bottom: 20px;
+        }
+    }
 }
 </style>

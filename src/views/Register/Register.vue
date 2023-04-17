@@ -23,7 +23,7 @@ import router from "@/router";
 
   @media only screen and (max-width: 992px) {
     margin: 0;
-      padding: 20px;
+    padding: 20px;
   }
 
   &__header {
@@ -33,6 +33,12 @@ import router from "@/router";
 
       img {
         cursor: pointer;
+      }
+
+      h1 {
+          @media only screen and (max-width: 992px) {
+              text-align: center;
+          }
       }
   }
 

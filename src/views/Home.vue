@@ -32,11 +32,21 @@ function logout() {
 <style lang="scss">
 .home {
   height: 100vh;
+  @media only screen and (max-width: 992px) {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+  }
+
   &__header {
     display: flex;
     padding: 10px 40px;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 992px) {
+      padding: 0;
+    }
   }
 
   &__dropdown {
@@ -55,16 +65,25 @@ function logout() {
   }
 
   &__content {
-    margin: 0 450px;
+    align-items: center;
     display: flex;
     flex-direction: column;
     div {
         margin: 30px 0;
     }
 
-      span {
-          margin: 40px 0;
+    img {
+      width: fit-content;
+
+      @media only screen and (max-width: 992px) {
+        width: -webkit-fill-available;
+        height: auto;
       }
+    }
+
+    span {
+        margin: 40px 0;
+    }
   }
 }
 </style>

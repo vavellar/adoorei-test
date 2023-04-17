@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/Home.vue'
 function checkIfUserIsLogged() {
   if (!localStorage.getItem('access_token')) {
     return '/login'

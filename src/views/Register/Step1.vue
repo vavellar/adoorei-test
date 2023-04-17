@@ -32,11 +32,16 @@ import {plans} from "@/utils/plans";
      align-items: center;
 
       &__cards {
-          display: flex;
-          margin: 40px 0;
+        margin: 40px 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 20px;
 
         @media only screen and (max-width: 992px) {
-          flex-direction: column;
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(3, 1fr);
+          grid-row-gap: 20px;
         }
       }
   }
