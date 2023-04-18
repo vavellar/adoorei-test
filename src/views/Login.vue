@@ -70,18 +70,18 @@ async function handleLogin() {
 
   &__form {
     background-color: #FFFFFF;
-    padding: 2.4rem;
-    margin: 2rem 0;
+    padding: 20px;
+    margin: 14px 0;
     border: 1px solid #E6EAF2;
     border-radius: 5px;
   }
 
   &__input {
-    margin-top: 1rem;
+    margin-top: 16px;
   }
 
   &__button {
-    margin-top: 2rem;
+    margin-top: 32px;
   }
 }
 @media (min-width: 1024px) {
